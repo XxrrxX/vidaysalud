@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/XxrrxX/vidaysalud/issues"
   },
-  "homepage": "https://github.com/XxrrxX/vidaysalud#readme"
+  "homepage": "https://github.com/XxrrxX/vidaysalud#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.2",
+    "yargs": "^17.7.2"
+  }
 }
