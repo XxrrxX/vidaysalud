@@ -223,6 +223,26 @@ text-decoration:none;
 }
 .fregistro{
     margin-top: 10px;
-    margin-left: 20%;
+    margin-left: 25%;
     margin-right: 30%;
+}
+
+.btnregistrar{
+	background-color: grey;
+	width: 100px;
+	height: 40px;
+	border-radius: 10px;
+	font-family: sans-serif;
+    font-size: 100%;
+    font-style: oblique;
+	color: black;
+	margin-top: 40px;
+	margin-left: 20%;
+	cursor: pointer;
+
+}
+.btnregistrar:hover{
+	background-color:dimgray;
+	color: white	;
+	
 }
