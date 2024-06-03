@@ -24,25 +24,9 @@ middlewares(){
 
 routes(){
    
-   this.app.get('/home', (req, res) => {
-       res.render('home');
-     });
-   this.app.get('/login', (req, res) => {
-       res.send('Bienvenido a login');
-     });
-   
-    this.app.get('/registro', (req, res) => {
-        res.render('registro');
-    });
-    this.app.post('/registro', (req, res) => {
-        res.status(201).json(
-            {
-                ususario:"User1",
-                password:"pass1"
-            }
-        );
-    });
-    
+    this.app.use('/home',require('../routes/home'));
+    this.app.use('/registro',require('../routes/registro'));
+ 
     }
 
 listen(){
