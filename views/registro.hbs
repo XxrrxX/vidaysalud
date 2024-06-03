@@ -35,12 +35,78 @@
 	<div class="titulo-registro">
 	<p class="tituloR">Registrate</p>
 	</div>
-	<form class="fregistro">
-	<p class="lbllogin">Crear Usuario</p><input type="text">
-		<p class="lbllogin">Crear password</p><input type="password">
-		<p class="lbllogin">Confirma password</p><input type="password">
-
+	<form class="fregistro" id="frmreg" action="" method="POST">
+	<p id="lblu" class="lbllogin">Crear Usuario</p><input placeholder="Ingresa tu nombre o usuario" id="u" name="usuario" type="text">
+		<p id="lblp1" class="lbllogin" >Crear password</p><input placeholder="Ingresa tu password" id="p1" name="pass1" type="password">
+		<p  id="lblp2" class="lbllogin">Confirma password</p><input placeholder="confirma tu password" id="p2" name="pass2" type="password">
+	<input type="submit" id="btreg" class="btnregistrar" >
 	</form>
+<script >
+	document.getElementById('btreg').addEventListener('click', (e) => {
+    e.preventDefault();
+    const formulario = document.getElementById('frmreg');
+	let u = document.getElementById('u').value;
+	let p1 = document.getElementById('p1').value;
+	let p2 = document.getElementById('p2').value;
+	let c1 = 0;
+	let c2 = 0;
+	let c3 = 0;
+	if( u.length == 0){
+	 document.getElementById('lblu').style.color="red";
+	 document.getElementById('u').style.borderBlockColor="red";
+	 c1=1;
+	}else{
+		document.getElementById('lblu').style.color="green";
+	    document.getElementById('u').style.borderBlockColor="green";
+	    c1=0;
+	}
+	if ( p1.length == 0) {
+		document.getElementById('lblp1').style.color="red";
+		document.getElementById('p1').style.borderBlockColor="red";
+		c2=1;
+		}else{
+			document.getElementById('lblp1').style.color="green";
+		    document.getElementById('p1').style.borderBlockColor="green";
+			c2=0
+		}
+	if ( p2.length == 0) {
+		document.getElementById('lblp2').style.color="red";
+		document.getElementById('p2').style.borderBlockColor="red";
+		c3=1;
+		}else{
+		document.getElementById('lblp2').style.color="geen";
+		document.getElementById('p2').style.borderBlockColor="green";
+		c3=0;
+		}
+	if(p1 != p2){
+		c2 = 3;
+		c3 = 4;
+	}
+	
+	if( c1 == 1 || c2 == 1 || c3 == 1){
+		alert("Faltan datos");
+	}
+	if(  c2 == 3 || c3 == 4){
+		alert("No coincide confirmacion password");
+		document.getElementById('lblp2').style.color="red";
+		document.getElementById('p2').style.borderBlockColor="red";
+	}else{
+		document.getElementById('lblp2').style.color="red";
+		document.getElementById('p2').style.borderBlockColor="red";
+	}
+	
+
+	if(c1 == 0 && c2 == 0 && c3 == 0){
+		
+    formulario.setAttribute('action', '/validar_registro?usuario='+u+'&password='+p1);
+    formulario.submit();
+
+	}
+
+	
+});
+
+</script>
 </div>
 </body>
 <footer>
