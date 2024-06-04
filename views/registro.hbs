@@ -29,6 +29,7 @@
 
 			<ul>	
 	</nav>
+
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </header>
 <div class="login">
@@ -111,10 +112,13 @@
         if (data.success) {
 			document.getElementById('frmreg').reset();	
             alert("Usuario creado");
-        }
+			window.location.href = '/home';
+
+        }	
     },
     error: function() {
         alert("¡Ups! este usuario ya existe.");
+		
     }
 });
 
