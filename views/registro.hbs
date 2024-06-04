@@ -105,7 +105,7 @@
 		
 
 	$.ajax({
-    url: '/validar_registro?usuario='+u+'&password='+p1,
+    url: '/validar_registro',
     method: "POST",
 	data: { data: {"usuario":u,"password":p1} },
     success: function(data) {
