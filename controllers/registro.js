@@ -10,8 +10,13 @@ const registroPost = async (req, res = response) => {
 
               //let datosjson = [{"usuario":req.query.usuario,"password":req.query.password}];
 
-              const {nombre , password , rol } = req.body;
-              const usuario = new Usuario({nombre , password , rol });
+              const {nombre , correo, password , rol } = req.body;
+              const usuario = new Usuario({nombre ,correo , password , rol });
+                //Verifivcar el correo
+                //Encriptar Contra
+                //Guardar en la DB
+
+
               await usuario.save();    
               res.json({usuario});
             
