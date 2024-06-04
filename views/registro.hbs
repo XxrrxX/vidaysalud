@@ -38,6 +38,7 @@
 	</div>
 	<form class="fregistro" id="frmreg" action="" method="">
 	<p id="lblu" class="lbllogin">Crear Usuario</p><input placeholder="Ingresa tu nombre o usuario" id="u" name="usuario" type="text">
+	<p id="lblc" class="lbllogin">Correo</p><input placeholder="Ingresa tu  correo" id="c" name="correo" type="email">
 		<p id="lblp1" class="lbllogin" >Crear password</p><input placeholder="Ingresa tu password" id="p1" name="pass1" type="password">
 		<p  id="lblp2" class="lbllogin">Confirma password</p><input placeholder="confirma tu password" id="p2" name="pass2" type="password">
 	<input type="submit" id="btreg" class="btnregistrar" >
@@ -49,11 +50,13 @@
     e.preventDefault();
     const formulario = document.getElementById('frmreg');
 	let u = document.getElementById('u').value;
+	let c = document.getElementById('c').value;
 	let p1 = document.getElementById('p1').value;
 	let p2 = document.getElementById('p2').value;
 	let c1 = 0;
 	let c2 = 0;
 	let c3 = 0;
+	let c4 = 0;
 	if( u.length == 0){
 	 document.getElementById('lblu').style.color="red";
 	 document.getElementById('u').style.borderBlockColor="red";
@@ -62,6 +65,15 @@
 		document.getElementById('lblu').style.color="green";
 	    document.getElementById('u').style.borderBlockColor="green";
 	    c1=0;
+	}
+	if( c.length == 0){
+	 document.getElementById('lblc').style.color="red";
+	 document.getElementById('c').style.borderBlockColor="red";
+	 c4=1;
+	}else{
+		document.getElementById('lblc').style.color="green";
+	    document.getElementById('c').style.borderBlockColor="green";
+	    c4=0;
 	}
 	if ( p1.length == 0) {
 		document.getElementById('lblp1').style.color="red";
@@ -86,7 +98,7 @@
 		c3 = 4;
 	}
 	
-	if( c1 == 1 || c2 == 1 || c3 == 1){
+	if( c1 == 1 || c2 == 1 || c3 == 1 || c4 == 1){
 		alert("Faltan datos");
 	}
 	if(  c2 == 3 || c3 == 4){
