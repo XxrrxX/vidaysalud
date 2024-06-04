@@ -29,19 +29,21 @@
 
 			<ul>	
 	</nav>
-
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </header>
 <div class="login">
 	<div class="titulo-registro">
 	<p class="tituloR">Registrate</p>
 	</div>
-	<form class="fregistro" id="frmreg" action="" method="POST">
+	<form class="fregistro" id="frmreg" action="" method="">
 	<p id="lblu" class="lbllogin">Crear Usuario</p><input placeholder="Ingresa tu nombre o usuario" id="u" name="usuario" type="text">
 		<p id="lblp1" class="lbllogin" >Crear password</p><input placeholder="Ingresa tu password" id="p1" name="pass1" type="password">
 		<p  id="lblp2" class="lbllogin">Confirma password</p><input placeholder="confirma tu password" id="p2" name="pass2" type="password">
 	<input type="submit" id="btreg" class="btnregistrar" >
 	</form>
 <script >
+	document.getElementById('frmreg').reset();	
+
 	document.getElementById('btreg').addEventListener('click', (e) => {
     e.preventDefault();
     const formulario = document.getElementById('frmreg');
@@ -100,13 +102,29 @@
 
 	if(c1 == 0 && c2 == 0 && c3 == 0){
 		
-    formulario.setAttribute('action', '/validar_registro?usuario='+u+'&password='+p1);
-    formulario.submit();
+
+	$.ajax({
+    url: '/validar_registro?usuario='+u+'&password='+p1,
+    method: "POST",
+	data: { data: {"usuario":u,"password":p1} },
+    success: function(data) {
+        if (data.success) {
+			document.getElementById('frmreg').reset();	
+            alert("Usuario creado");
+        }
+    },
+    error: function() {
+        alert("¡Ups! este usuario ya existe.");
+    }
+});
+
+
 
 	}
 
 	
 });
+
 
 </script>
 </div>
