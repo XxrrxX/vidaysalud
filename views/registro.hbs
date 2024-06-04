@@ -119,7 +119,7 @@
 	$.ajax({
     url: '/validar_registro',
     method: "POST",
-	data: { data: {"usuario":u,"password":p1} },
+	data: { data: {"usuario":u,"correo":c,"password":p1,"rol":"USER_ROL"},
     success: function(data) {
         if (data.success) {
 			document.getElementById('frmreg').reset();	
