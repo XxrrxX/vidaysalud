@@ -45,22 +45,34 @@ if(datosF.length > 0){
     let c = document.getElementById('c').value;
     let p = document.getElementById('p1').value;
     let r = 'USER_ROLE';
-    
-    $.ajax({
-        url: '/registrar',
-        type: 'POST',
-        body: { nombre: n, correo: c, password: p,rol: r  },
-        dataType: 'json',
-        success: (data) => {
-            if (data.success) {
-                alert('¡Usuario registrado!');
-            }
+    fetch('/registrar', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json' // Tipo de contenido
         },
-        error: () => {
-            alert('¡Ups! Algo salió mal.');
+        body: JSON.stringify({ nombre: n, correo: c, password: p,rol: r  }) // Datos a enviar
+    }).then(response => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            alert("A ocurrido un error inesperado!");
+            throw new Error('Error en la llamada Ajax');
         }
+    })
+    .then(data => {
+        console.log('Respuesta del servidor:', data);
+        let datosjson = JSON.parse(data);
+        if(datosjson.msg == "sucess"){
+            alert('Registro exitoso');
+            document.getElementById('frmreg').reset();
+        }if(datosjson.msg == "error correo"){
+            alert('El correo '+c+' ya esta registrado');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
-      
+        
 
     }else{
         alert('No coincide la conf. del password')
