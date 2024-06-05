@@ -18,6 +18,18 @@ let validar = (id,lbl,dato,df)=>{
     return df;
 }
 
+let confpass = (i1,i2,lbl2) =>{
+    if(document.getElementById(i1).value == document.getElementById(i2).value ){
+        document.getElementById(i2).style.color='green';        
+        document.getElementById(lbl2).style.borderBlockColor='green';
+        return true
+    }else{
+        document.getElementById(lbl2).style.color='red';        
+        document.getElementById(i2).style.borderBlockColor='red';
+        return false
+    }
+}
+
 function enviar(){
 var datosF = "";
 datosF = validar('n','lblu','nombre',datosF);
@@ -27,6 +39,25 @@ datosF = validar('p2','lblp2','conf. password',datosF);
 
 if(datosF.length > 0){
     alert(`Faltan los siguientes datos: \n ${datosF}`);
+}else{
+    if(confpass('p1','p2','lblp2')){
+    let n = document.getElementById('n').value;
+    let c = document.getElementById('c').value;
+    let p = document.getElementById('p1').value;
+    let r = 'USER_ROLE';
+    fetch('/registrar', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json' // Tipo de contenido
+        },
+        body: JSON.stringify({ nombre: n, correo: c, password: p,rol: r  }) // Datos a enviar
+    });
+
+    }else{
+        alert('No coincide la conf. del password')
+    }
 }
+
+
 
 }
