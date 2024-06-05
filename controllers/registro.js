@@ -10,20 +10,19 @@ const registroGet = (req, res = response) => {
  
 
 const registroPost = async (req, res = response) => {
-
-              //let datosjson = [{"usuario":req.query.usuario,"password":req.query.password}];
-
+               console.log(req.body);
               const {nombre , correo, password , rol } = req.body;
               const usuario = new Usuario({nombre ,correo , password , rol });
                 //Verifivcar el correo
                 const Existemail = await Usuario.findOne({correo});
                 if(Existemail){
-                    console.log('POST /registrar El correo ya esta registrado estatus 400');
-                    return res.status(400).json({
-                        msg:'Este correo ya esta registrado'
-                    })
+                    console.log('POST /registrar El correo ya esta registrado estatus 203');
+                    return res.status(203).json({
+                        msg:'error correo'
+                    });
                 }
                 //Encriptar Contra
+                
                 const salt = bcryptjs.genSaltSync(10);
                 usuario.password = bcryptjs.hashSync(password, salt );
                 //Guardar en la DB
@@ -31,7 +30,7 @@ const registroPost = async (req, res = response) => {
 
               await usuario.save();
               console.log('POST /registrar exitoso estatus 201');    
-              res.status(201).json({sucess:true, usuario});
+              res.status(201).json({msg:'sucess'});
             
     };
         
