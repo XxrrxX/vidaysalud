@@ -110,6 +110,33 @@ body{
 }
 .nav-menu_visible{
 	left:0;
+	
+}
+footer p{
+    padding: 0px;
+}
+footer{
+	margin-top:-10px;
+	height: 30px;
+	background-color:purple;
+	color:white;
+	text-align:center;
+	font-size:15px;	
+}
+.btn-wsp {
+	position:fixed;
+	width:55px;
+	height:55px;
+	line-height:55px;
+	margin-bottom:50px;
+	right:30px;
+	background:purple;
+	color:white;
+	border-radius:50px;
+	text-align:center;
+	font-size:30px;
+	box-shadow:0px 1px 10px rgba(0,0,0,0.5);
+	z-index:100;
 }
 }
 
@@ -124,12 +151,14 @@ body{
 }
 footer{
 	margin-top:100%;
-	margin-bottom:0;
+	margin-bottom:0px;
+	height: 40px;
 	background-color:purple;
 	color:white;
 	text-align:center;
-	font-size:10px;	
+	font-size:15px;	
 }
+
 .nav-mnu-v{
 	position:absolute;
 	display:none;
