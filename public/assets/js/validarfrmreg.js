@@ -25,6 +25,8 @@ datosF = validar('c','lblc','correo',datosF);
 datosF = validar('p1','lblp1','password',datosF);
 datosF = validar('p2','lblp2','conf. password',datosF);
 
-alert(`Faltan los siguientes datos: \n ${datosF}`);
+if(datosF.length > 0){
+    alert(`Faltan los siguientes datos: \n ${datosF}`);
+}
 
 }
