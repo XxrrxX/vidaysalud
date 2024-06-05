@@ -18,7 +18,7 @@ const registroPost = async (req, res = response) => {
                 //Verifivcar el correo
                 const Existemail = await Usuario.findOne({correo});
                 if(Existemail){
-                    console.log('POST /registro El correo ya esta registrado estatus 400');
+                    console.log('POST /registrar El correo ya esta registrado estatus 400');
                     return res.status(400).json({
                         msg:'Este correo ya esta registrado'
                     })
@@ -29,8 +29,9 @@ const registroPost = async (req, res = response) => {
                 //Guardar en la DB
 
 
-              await usuario.save();    
-              res.json({usuario});
+              await usuario.save();
+              console.log('POST /registrar exitoso estatus 201');    
+              res.status(201).json({usuario});
             
     };
         
