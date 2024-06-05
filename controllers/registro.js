@@ -31,7 +31,7 @@ const registroPost = async (req, res = response) => {
 
               await usuario.save();
               console.log('POST /registrar exitoso estatus 201');    
-              res.status(201).json({usuario});
+              res.status(201).json({sucess:true, usuario});
             
     };
         
