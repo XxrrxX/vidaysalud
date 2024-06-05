@@ -45,13 +45,22 @@ if(datosF.length > 0){
     let c = document.getElementById('c').value;
     let p = document.getElementById('p1').value;
     let r = 'USER_ROLE';
-    fetch('/registrar', {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json' // Tipo de contenido
+    
+    $.ajax({
+        url: '/registrar',
+        type: 'POST',
+        body: { nombre: n, correo: c, password: p,rol: r  },
+        dataType: 'json',
+        success: (data) => {
+            if (data.success) {
+                alert('¡Usuario registrado!');
+            }
         },
-        body: JSON.stringify({ nombre: n, correo: c, password: p,rol: r  }) // Datos a enviar
+        error: () => {
+            alert('¡Ups! Algo salió mal.');
+        }
     });
+      
 
     }else{
         alert('No coincide la conf. del password')
