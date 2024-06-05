@@ -65,10 +65,14 @@ if(datosF.length > 0){
         if(datosjson.msg == "sucess"){
             alert('Registro exitoso');
             location.reload();            
-        }if(datosjson.msg == "error correo"){
+        }if(datosjson.msg == "error1 correo"){
             alert('El correo '+c+' ya esta registrado');
             location.reload();
+        }if(datosjson.msg == "error2 correo"){
+            alert('El valor insgresado '+c+' no es un correo');
+            location.reload();
         }
+
     })
     .catch(error => {
         console.error('Error:', error);
