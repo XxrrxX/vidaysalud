@@ -64,9 +64,10 @@ if(datosF.length > 0){
         let datosjson = JSON.parse(data);
         if(datosjson.msg == "sucess"){
             alert('Registro exitoso');
-            document.getElementById('frmreg').reset();
+            location.reload();            
         }if(datosjson.msg == "error correo"){
             alert('El correo '+c+' ya esta registrado');
+            location.reload();
         }
     })
     .catch(error => {
