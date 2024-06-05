@@ -33,16 +33,18 @@ middlewares(){
 }
 
 routes(){
-   
+
+    this.app.use('/',require('../routes/home'));
     this.app.use('/home',require('../routes/home'));
     this.app.use('/registro',require('../routes/registro'));
-    this.app.use('/validar_registro',require('../routes/registro'));
-    }
+    this.app.use('/registrar',require('../routes/registro'));
+    
+}
 
 listen(){
     
  this.app.listen(this.port, () => {
-    console.log(`Example app listening on port ${this.port}`);
+    console.log(`Servidor levantado PORT: ${this.port}`);
   });
 }
 
