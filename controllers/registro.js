@@ -1,7 +1,7 @@
 const { response } = require('express');
-const fs = require('fs');
-const Usuario = require('../models/usuario');
 const bcryptjs = require('bcryptjs');
+const { validationResult } = require('express-validator');
+const Usuario = require('../models/usuario');
 
 const registroGet = (req, res = response) => {
     console.log('GET /Registro estatus 200')
@@ -10,7 +10,12 @@ const registroGet = (req, res = response) => {
  
 
 const registroPost = async (req, res = response) => {
-               console.log(req.body);
+              const errors = validationResult(req.body);
+              if(errors.isEmpty()){
+                return res.status(203).json({
+                    msg:'error2 correo'
+                });
+              }
               const {nombre , correo, password , rol } = req.body;
               const usuario = new Usuario({nombre ,correo , password , rol });
                 //Verifivcar el correo
@@ -18,7 +23,7 @@ const registroPost = async (req, res = response) => {
                 if(Existemail){
                     console.log('POST /registrar El correo ya esta registrado estatus 203');
                     return res.status(203).json({
-                        msg:'error correo'
+                        msg:'error1 correo'
                     });
                 }
                 //Encriptar Contra
