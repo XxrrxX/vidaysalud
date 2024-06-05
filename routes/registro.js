@@ -8,6 +8,9 @@ const router = Router();
 
 
 router.get('/',registroGet);
-router.post('/',[ check('correo','El correo no es valido').isEmail(),],registroPost);
+router.post('/',[ 
+    check('nombre','nombre no valido').not().isEmpty(),
+    check('correo','correo no valido').isEmail(),
+],registroPost);
 
 module.exports = router;
