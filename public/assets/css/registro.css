@@ -122,8 +122,17 @@ body{
     box-shadow: 0px 20px 20px ;
 }
 footer p{
-    margin-top: -20%;
+    padding: 0px;
 }
+footer{
+	margin-bottom:0px;
+	height: 100px;
+	background-color:purple;
+	color:white;
+	text-align:center;
+	font-size:15px;	
+}
+
 }
 
 body{
@@ -137,11 +146,12 @@ body{
 }
 footer{
 	margin-top:100%;
-	margin-bottom:0;
+	margin-bottom:0px;
+	height: 40px;
 	background-color:purple;
 	color:white;
 	text-align:center;
-	font-size:10px;	
+	font-size:15px;	
 }
 .nav-mnu-v{
 	position:absolute;
@@ -220,6 +230,11 @@ text-decoration:none;
 
 .lbllogin + input{
     border-radius: 10px;
+	width: 180%;
+	height: 23px;
+	font-size: 18px;
+	margin-left: -30%;
+
 }
 .fregistro{
     margin-top: 10px;
@@ -236,7 +251,7 @@ text-decoration:none;
     font-size: 100%;
     font-style: oblique;
 	color: black;
-	margin-top: 40px;
+	margin-top: 20px;
 	margin-left: 20%;
 	cursor: pointer;
 
