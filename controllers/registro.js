@@ -10,11 +10,11 @@ const registroGet = (req, res = response) => {
  
 
 const registroPost = async (req, res = response) => {
-              const errors = validationResult(req.body);
-              if(errors.isEmpty()){
-                return res.status(203).json({
-                    msg:'error2 correo'
-                });
+              const errors = validationResult(req);
+              if(!errors.isEmpty()){
+                console.log('POST /registrar Errores en la validacion de datos estatus 203');
+                console.log(errors.errors[0].msg);
+                return res.status(203).json(errors.errors[0]);
               }
               const {nombre , correo, password , rol } = req.body;
               const usuario = new Usuario({nombre ,correo , password , rol });
@@ -22,9 +22,7 @@ const registroPost = async (req, res = response) => {
                 const Existemail = await Usuario.findOne({correo});
                 if(Existemail){
                     console.log('POST /registrar El correo ya esta registrado estatus 203');
-                    return res.status(203).json({
-                        msg:'error1 correo'
-                    });
+                    return res.status(203).json({ msg:'correo duplicado'});
                 }
                 //Encriptar Contra
                 
