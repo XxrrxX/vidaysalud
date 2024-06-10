@@ -21,7 +21,6 @@ let validar = (id,lbl,dato,df)=>{
 
 function enviar(){
 var datosF = "";
-datosF = validar('n','lblu','nombre',datosF);
 datosF = validar('c','lblc','correo',datosF);
 datosF = validar('p1','lblp1','password',datosF);
 
