@@ -39,6 +39,7 @@ routes(){
     this.app.use('/registro',require('../routes/registro'));
     this.app.use('/registrar',require('../routes/registro'));
     this.app.use('/login',require('../routes/login'));
+    this.app.use('/auth',require('../routes/auth'));
     
 }
 
