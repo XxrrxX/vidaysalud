@@ -9,11 +9,6 @@ const loginGet = (req, res = response) => {
 }
 
 
-const loginPost = (req, res = response) => {
-    console.log('POST /login estatus 200')
-}
-
 module.exports = {
-    loginPost,
-    loginGet,
+    loginGet
 }
