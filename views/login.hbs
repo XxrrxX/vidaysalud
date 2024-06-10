@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="icon" type="image/icon" href="./img/ico/vidaysalud.ico">
+<link rel="stylesheet" href="./assets/css/registro.css">
+<link rel="stylesheet" href="./assets/css/fontello/css/fontello.css">
+<script src="https://kit.fontawesome.com/5b0a1a1a16.js" crossorigin="anonymous"></script>
+<script defer src="./assets/js/menu.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+<header class="header">
+	<img id="logo" href="#"src="./img/ico/vidaysalud.png"></img>
+	<nav class="nav">
+		<button class="nav-toggle" aria-label="Abrir-menu">
+		<i class="fa-solid fa-bars"></i>
+		</button>
+			<ul class="nav-menu">
+			<li class="nav-menu-item">
+			 <a class="nav-menu-link nav-link nav-menu-link_active" href="/home">Inicio</a>
+			</li>
+			<li class="nav-menu-item">
+			 <a class="nav-menu-link nav-link nav-menu-link_active" href="/registro">Registro</a>
+			</li>
+
+			<ul>	
+	</nav>
+</header>
+<div class="login">
+	<div class="titulo-registro">
+	<p class="tituloR">inicia sesion</p>
+	</div>
+	<form class="fregistro" id="frmreg" method="POST">
+	<p id="lblu" class="lbllogin">Usuario</p><input class="input" placeholder="Ingresa tu nombre o usuario" id="n" name="nombre" type="text">
+	<p id="lblc" class="lbllogin">Correo</p><input class="input" placeholder="Ingresa tu  correo" id="c" name="correo" type="email">
+		<p id="lblp1" class="lbllogin" >Password</p><input class="input" placeholder="Ingresa tu password 6 caracteres" id="p1" name="password" type="password">
+	<button type="button" id="btreg" onclick="enviar()" class="btnregistrar" >iniciar Sesion</button>
+	</form>
+	<script src="./assets/js/validar-login.js" ></script>
+
+</div>
+</body>
+{{>footer}}
+</html>
