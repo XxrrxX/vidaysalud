@@ -198,7 +198,7 @@ text-decoration:none;
 	background:white;
 }
 
-.login{
+.reg{
     margin-left: auto;
     margin-right: auto;
     background-color:darkslategrey;
@@ -208,6 +208,18 @@ text-decoration:none;
     border-radius: 10%;
     box-shadow: 0px 20px 20px ;
 }
+
+.login{
+    margin-left: auto;
+    margin-right: auto;
+    background-color:darkslategrey;
+    margin-top: -90%;
+    height: 320px;
+    width: 350px;
+    border-radius: 10%;
+    box-shadow: 0px 20px 20px ;
+}
+
 .titulo-registro{
  color: white;
  font: oblique bold 120% cursive;
