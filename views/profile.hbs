@@ -31,10 +31,10 @@ fetch('/profile', {
         console.log('Respuesta del servidor:', data);
         let datosjson = JSON.parse(data);
         if(datosjson.msg == "sucess"){  
-			 const capa = document.getElementById("capa");
-    		 const h1 = document.createElement("h1");
-   			 h1.innerHTML = texto;
-   			 capa.appendChild(h1);        
+			 //const capa = document.getElementById("capa");
+    		 //const h1 = document.createElement("h1");
+   			 //h1.innerHTML = texto;
+   			 //capa.appendChild(h1);        
         }else{
             alert(datosjson.msg);
             window.location.href="/login";
@@ -50,8 +50,6 @@ fetch('/profile', {
 <body>
 
 {{>header}}
-
-<p id="usuario">Usuario<p>
 
 <main>
 </main>
