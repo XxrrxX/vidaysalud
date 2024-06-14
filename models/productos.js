@@ -7,21 +7,16 @@ const ProductoSchema = Schema({
         required:[true,'El nombre del producto es obligatorio'],
         unique:true
     },
-    Descripcion:{
-        type:String,
-        required:[true,'La descripcion es obligatoria'],
-        unique:true
-    },
     cantidad:{
-        type:Int,
+        type:Number,
         required:[true,'La  cantidad es obligatoria']
     },
     Precio_compra:{
-        type:Int,
+        type:Number,
         required:[true,'El precio compra es obligatorio']
     },
     Precio_venta:{
-        type:Int,
+        type:Number,
         required:[true,'El precio venta es obligatorio']
     }
 });
@@ -32,4 +27,4 @@ ProductoSchema.methods.toJSON = function(){
         return producto;
 }
 
-module.exports = model('Producto',ProductoSchema);
+module.exports = model('Productos',ProductoSchema);
