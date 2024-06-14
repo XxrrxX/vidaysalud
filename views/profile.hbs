@@ -44,7 +44,7 @@ fetch('/profile', {
 			localStorage.setItem("AuthVS",JSON.stringify(AuthVS));
 			let usuario = AuthVS.usuario;
 			let puser = document.getElementById("dvusuario");
-			puser.innerText= usuario;
+			puser.innerText= "Bienvenid@ "+usuario;
         }else{
             alert(datosjson.msg);
             window.location.href="/login";
