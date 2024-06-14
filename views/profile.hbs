@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile</title>
+<link rel="icon" type="image/icon" href="./img/ico/vidaysalud.ico">
+<link rel="stylesheet" href="./assets/css/inicio.css">
+<link rel="stylesheet" href="./assets/css/fontello/css/fontello.css">
+<script src="https://kit.fontawesome.com/5b0a1a1a16.js" crossorigin="anonymous"></script>
+<script defer src="./assets/js/menu.js"></script>
+<script>
+let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
+console.log(AuthVS);
+fetch('/profile', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json' // Tipo de contenido
+        },
+        body: JSON.stringify(AuthVS) // Datos a enviar
+    }).then(response => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            alert("A ocurrido un error inesperado!");
+            throw new Error('Error en la llamada Ajax');
+        }
+    })
+    .then(data => {
+        console.log('Respuesta del servidor:', data);
+        let datosjson = JSON.parse(data);
+        if(datosjson.msg == "sucess"){  
+			 const capa = document.getElementById("capa");
+    		 const h1 = document.createElement("h1");
+   			 h1.innerHTML = texto;
+   			 capa.appendChild(h1);        
+        }else{
+            alert(datosjson.msg);
+            window.location.href="/login";
+        }
+
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });  
+
+</script>
+</head>
+<body>
+
+{{>header}}
+
+<p id="usuario">Usuario<p>
+
+<main>
+</main>
+	<a href="https://api.whatsapp.com/send?phone=525582541206" class="btn-wsp" target="_blank"><i class="icon-whatsapp"></i></a>
+</body>
+{{>footer}}
+</html>
