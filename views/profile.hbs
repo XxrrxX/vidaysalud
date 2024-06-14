@@ -15,7 +15,7 @@
 <body>
 
 {{>header}}
-
+<div id="dvusuario">Bienvenido</div>
 <script>
 let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
 console.log(AuthVS);
@@ -30,6 +30,7 @@ fetch('/profile', {
             return response.text();
         } else {
             alert("A ocurrido un error inesperado!");
+			 window.location.href="/login";
             throw new Error('Error en la llamada Ajax');
         }
     })
@@ -40,7 +41,10 @@ fetch('/profile', {
 			let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));  
 			AuthVS.usuario = datosjson.usuario;
 			console.log(JSON.stringify(AuthVS));
-			localStorage.setItem("AuthVS",AuthVS);
+			localStorage.setItem("AuthVS",JSON.stringify(AuthVS));
+			let usuario = AuthVS.usuario;
+			let puser = document.getElementById("dvusuario");
+			puser.innerText= usuario;
         }else{
             alert(datosjson.msg);
             window.location.href="/login";
@@ -53,13 +57,6 @@ fetch('/profile', {
  
 </script>
 
-<script>
-if(AuthVS){	 
-let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
-let puser = document.getElementById("phome");
-puser.textContent= AuthVS.usuario;
-}
-</script>
 <main>
 </main>
 	<a href="https://api.whatsapp.com/send?phone=525582541206" class="btn-wsp" target="_blank"><i class="icon-whatsapp"></i></a>
