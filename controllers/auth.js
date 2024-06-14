@@ -1,6 +1,7 @@
 const { response } = require('express');
 const Usuario = require('../models/usuario');
 const bcryptjs = require('bcryptjs');
+const { gjwt } = require('../helpers/GJWT');
 
 const authPost = async(req, res = response) => {
     const {correo, password} = req.body;
@@ -20,9 +21,10 @@ const authPost = async(req, res = response) => {
             return res.status(203).json({msg:'Password incorrecta \n Verifique el password'});
         }
         //Generar JWT
-
+        const token = await gjwt(usuario.id);
+        uid = usuario._id;
         console.log('POST /auth estatus 200');
-        res.status(200).json({ msg:'sucess'});      
+        res.status(200).json({id:uid, msg:'sucess',token});      
     }catch(error){
         console.log('POST /auth estatus 500');
         console.log(error);
