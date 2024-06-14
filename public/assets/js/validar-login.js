@@ -1,6 +1,5 @@
 
 document.getElementById('frmreg').reset();
-
 let validar = (id,lbl,dato,df)=>{
 
     if(document.getElementById(id).value.length == 0){
