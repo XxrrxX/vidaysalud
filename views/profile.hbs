@@ -60,8 +60,6 @@ fetch('/profile', {
 			let usuario = AuthVS.usuario;
 			let puser = document.getElementById("dvusuario");
 			puser.innerText= "Bienvenid@ "+usuario;
-			let login = document.getElementById("lilog")
-			login.style.display="none";
         }else{
             alert(datosjson.msg);
             window.location.href="/login";
