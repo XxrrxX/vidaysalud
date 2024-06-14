@@ -13,9 +13,11 @@
 </head>
 <script>
 	let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
+	if(AuthVS){
 	console.log(AuthVS.token);
 	if(JSON.stringify(AuthVS.token.length) != 0){
 		window.location.href = '/profile';
+	}
 	}
 </script>
 <body>
