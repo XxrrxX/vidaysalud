@@ -73,8 +73,8 @@ fetch('/agregar_productos', {
 
             nombre_producto.innerHTML = producto.nombre_del_producto;
             cantidad.innerHTML = producto.cantidad;
-            precio_compra.innerHTML = producto.Precio_compra;
-            precio_venta.innerHTML = producto.Precio_venta;
+            precio_compra.innerHTML = "$"+parseFloat(producto.Precio_compra);
+            precio_venta.innerHTML = "$"+parseFloat(producto.Precio_venta);
 
             
 
