@@ -1,6 +1,7 @@
 const { response,request } = require('express');
 const fs = require('fs');
 const Usuario = require('../models/usuario');
+const Producto = require('../models/productos');
 const bcryptjs = require('bcryptjs');
 const {vjwt} = require('../middlewares/vjwt');
 
@@ -24,7 +25,9 @@ const AgpPost = async(req, res = response) => {
     }else{
     console.log("ID confirmado");
     console.log('POST /agregar_productos estatus 200')
-    res.status(200).json({msg:"sucess",usuario:usuario.nombre,rol:usuario.rol});
+    const productos = await Producto.find();
+
+    res.status(200).json({msg:"sucess",usuario:usuario.nombre,rol:usuario.rol,productos});
     }
     }catch(error){
         return res.status(203).json({msg:"Sesion expirada"});
