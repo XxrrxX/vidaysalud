@@ -2,10 +2,11 @@ const { response } = require('express');
 const fs = require('fs');
 const Usuario = require('../models/usuario');
 const bcryptjs = require('bcryptjs');
+const {vjwt} = require('../middlewares/vjwt');
 
-const homeGet = (req, res = response) => {
-    console.log('GET /home estatus 200')
-    res.render('home');
+
+const homeGet = async(req, res = response) => {
+    res.status(200).render('home')
 }
 
 
@@ -15,5 +16,5 @@ const homePost = (req, res = response) => {
 
 module.exports = {
     homePost,
-    homeGet,
+    homeGet
 }
