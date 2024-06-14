@@ -1,7 +1,7 @@
 const { response } = require('express');
 const Usuario = require('../models/usuario');
 const bcryptjs = require('bcryptjs');
-const { gjwt } = require('../helpers/GJWT');
+const { gjwt } = require('../helpers/gjwt');
 
 const authPost = async(req, res = response) => {
     const {correo, password} = req.body;
