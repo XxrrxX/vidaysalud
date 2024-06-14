@@ -37,6 +37,7 @@ routes(){
     this.app.use('/',require('../routes/home'));
     this.app.use('/home',require('../routes/home'));
     this.app.use('/profile',require('../routes/profile'));
+    this.app.use('/agregar_productos',require('../routes/agregar_productos'));
     this.app.use('/registro',require('../routes/registro'));
     this.app.use('/registrar',require('../routes/registro'));
     this.app.use('/login',require('../routes/login'));
