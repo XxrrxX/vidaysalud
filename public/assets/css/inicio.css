@@ -5,6 +5,7 @@
 }
 body{
 	font-family:sans-serif;
+
 }
 .header{
 	background-color:purple;
@@ -116,13 +117,14 @@ footer p{
     padding: 0px;
 }
 footer{
-	margin-top:-10px;
+	margin-top: 150%;
 	height: 30px;
 	background-color:purple;
 	color:white;
 	text-align:center;
 	font-size:15px;	
 }
+
 .btn-wsp {
 	position:fixed;
 	width:55px;
@@ -138,6 +140,13 @@ footer{
 	box-shadow:0px 1px 10px rgba(0,0,0,0.5);
 	z-index:100;
 }
+.dvusuario{
+	color: white;
+	display: flex;
+	font-size: 40px;
+	margin-top: -110%;
+	background-color: purple;
+}
 }
 
 body{
@@ -150,13 +159,13 @@ body{
 	margin-bottom:0;
 }
 footer{
-	margin-top:100%;
-	margin-bottom:0px;
+
 	height: 40px;
 	background-color:purple;
 	color:white;
 	text-align:center;
 	font-size:15px;	
+	margin-top: 150%;
 }
 
 .nav-mnu-v{
@@ -202,4 +211,12 @@ text-decoration:none;
 	text-decoration:none;
 	color:purple;
 	background:white;
+}
+
+.dvusuario{
+	color: white;
+	display: flex;
+	font-size: 40px;
+	margin-top: -92%;
+	background-color: purple;
 }
