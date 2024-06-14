@@ -11,7 +11,13 @@
 <script src="https://kit.fontawesome.com/5b0a1a1a16.js" crossorigin="anonymous"></script>
 <script defer src="./assets/js/menu.js"></script>
 </head>
-
+<script>
+	let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
+	console.log(AuthVS.token);
+	if(JSON.stringify(AuthVS.token.length) != 0){
+		window.location.href = '/profile';
+	}
+</script>
 <body>
 
 {{>header}}
