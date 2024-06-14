@@ -141,7 +141,7 @@ footer{
 	z-index:100;
 }
 
-.dvusuario p{
+#dvusuario {
 background-color: purple;	
 width: 100%;
 height: 60px;
@@ -213,7 +213,7 @@ text-decoration:none;
 	background:white;
 }
 
-.dvusuario{
+#dvusuario{
 	width: 100%;
 	color: white;
 	display: flex;
