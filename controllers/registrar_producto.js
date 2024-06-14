@@ -9,7 +9,7 @@ const registroPost = async (req, res = response) => {
   //Verifivcar el correo
   const Existproducto = await Producto.findOne({nombre_del_producto});
   if(Existproducto){
-    const stok = Existproducto.cantidad + cantidad;
+    const stok = parseInt(Existproducto.cantidad) + parseInt(cantidad);
     const body = req.body;
     body.cantidad = stok;
     const { Precio_compra ,Precio_venta, ...resto} = body;
