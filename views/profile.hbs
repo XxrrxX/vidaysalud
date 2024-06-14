@@ -10,6 +10,12 @@
 <link rel="stylesheet" href="./assets/css/fontello/css/fontello.css">
 <script src="https://kit.fontawesome.com/5b0a1a1a16.js" crossorigin="anonymous"></script>
 <script defer src="./assets/js/menu.js"></script>
+
+</head>
+<body>
+
+{{>header}}
+
 <script>
 let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
 console.log(AuthVS);
@@ -30,11 +36,11 @@ fetch('/profile', {
     .then(data => {
         console.log('Respuesta del servidor:', data);
         let datosjson = JSON.parse(data);
-        if(datosjson.msg == "sucess"){  
-			 //const capa = document.getElementById("capa");
-    		 //const h1 = document.createElement("h1");
-   			 //h1.innerHTML = texto;
-   			 //capa.appendChild(h1);        
+        if(datosjson.msg == "sucess"){
+			let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));  
+			AuthVS.usuario = datosjson.usuario;
+			console.log(JSON.stringify(AuthVS));
+			localStorage.setItem("AuthVS",AuthVS);
         }else{
             alert(datosjson.msg);
             window.location.href="/login";
@@ -43,14 +49,17 @@ fetch('/profile', {
     })
     .catch(error => {
         console.error('Error:', error);
-    });  
-
+    });
+ 
 </script>
-</head>
-<body>
 
-{{>header}}
-
+<script>
+if(AuthVS){	 
+let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
+let puser = document.getElementById("phome");
+puser.textContent= AuthVS.usuario;
+}
+</script>
 <main>
 </main>
 	<a href="https://api.whatsapp.com/send?phone=525582541206" class="btn-wsp" target="_blank"><i class="icon-whatsapp"></i></a>
