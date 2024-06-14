@@ -27,6 +27,12 @@
 	</nav>
 </header>
 <div id="dvusuario">Bienvenido</div>
+<div id="productos">
+    
+    <table id="tablap" border="1">
+    <tr></tr><th>Nombre del producto</th><th>cantidad</th><th>precio compra</th><th>precio venta</th></tr>
+    </table>
+</div>
 <script>
 let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
 console.log(AuthVS);
@@ -56,6 +62,24 @@ fetch('/agregar_productos', {
 			let usuario = AuthVS.usuario;
 			let puser = document.getElementById("dvusuario");
 			puser.innerText= "Bienvenid@ "+usuario+" agrega productos";
+            let productos = datosjson.productos;
+            let tablap = document.getElementById("tablap");
+            productos.forEach(function(producto) {
+            var fila = tablap.insertRow(-1);
+            var nombre_producto = fila.insertCell(0);
+            var cantidad = fila.insertCell(1);
+            var precio_compra = fila.insertCell(2);
+            var precio_venta = fila.insertCell(3);
+
+            nombre_producto.innerHTML = producto.nombre_del_producto;
+            cantidad.innerHTML = producto.cantidad;
+            precio_compra.innerHTML = producto.Precio_compra;
+            precio_venta.innerHTML = producto.Precio_venta;
+
+            
+
+});
+
         }else{
             alert(datosjson.msg);
             window.location.href="/login";
@@ -67,7 +91,7 @@ fetch('/agregar_productos', {
     });
  
 </script>
-
+<>
 <main>
 </main>
 	<a href="https://api.whatsapp.com/send?phone=525582541206" class="btn-wsp" target="_blank"><i class="icon-whatsapp"></i></a>
