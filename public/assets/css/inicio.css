@@ -7,14 +7,48 @@ body{
 	font-family:sans-serif;
 
 }
+#dvfrmprod{
+	margin-top: -24%;
+	display: flex;
+	width: 15%;
+	background-color: #2c3e50;
+	border-radius: 10px;
+	box-shadow: 0px 20px 20px ;
+}
+
+#dvfrmprod input{
+	display: flex;
+	padding: 10px;
+	font-size: 10px;
+	margin-left: 5px;
+	width: 100%;
+}
+#dvfrmprod p{
+	display: flex;
+	padding: 10px;
+	font-size: 14px;
+	color: white;
+	margin-left: 10px;
+}
+#dvfrmprod button{
+	border-radius: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	padding: 10px;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	font-size: 14px;
+}
+
 #tablap{
 	border-radius: 10px;
-	box-shadow: 5px, 5px ,10px;
+	box-shadow: 0px 20px 20px ;
 	background-color: white;
 	text-align: center;
-	width: 100%;
+	width: 90%;
 	height: 10px;
-	margin-left: auto;
+	margin-left: 10%;
 	margin-right: auto;
 
 }
