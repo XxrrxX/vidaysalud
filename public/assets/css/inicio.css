@@ -223,3 +223,21 @@ text-decoration:none;
 	background:white;
 }
 
+#productos{
+	background-color: white;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	width: 85%;
+	height: 300px;
+}
+
+#tablap{
+	text-align: center;
+	width: 100%;
+	height: 10px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
