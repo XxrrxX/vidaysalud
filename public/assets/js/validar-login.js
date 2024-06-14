@@ -1,3 +1,4 @@
+
 document.getElementById('frmreg').reset();
 
 let validar = (id,lbl,dato,df)=>{
@@ -48,7 +49,8 @@ if(datosF.length > 0){
         let datosjson = JSON.parse(data);
         if(datosjson.msg == "sucess"){
             alert('Inicio exitoso');
-            location.reload();            
+            localStorage.setItem("AuthVS",JSON.stringify({"id":datosjson.id,"token":datosjson.token}));
+            window.location.href='/home';            
         }else{
             alert(datosjson.msg);
             location.reload();
