@@ -1,0 +1,7 @@
+<button id="btnCS" onclick="cerrar_sesion()">Cerrar Sesion</button>
+<script>
+    function cerrar_sesion(){
+    localStorage.removeItem('AuthVS');
+    window.location.href="/home";
+    }
+</script>
