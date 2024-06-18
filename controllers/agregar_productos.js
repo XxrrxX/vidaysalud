@@ -19,7 +19,7 @@ const AgpPost = async(req, res = response) => {
     }else{
     try{    
     const usuario = await Usuario.findById(id);
-    if(!usuario){
+    if(!usuario || usuario.rol == "USER_ROLE"){
         console.log("POST /agregar_productos error en ID nulo o no encontrado 203");
         res.status(203).json({msg:"Sesion expirada"});
     }else{
