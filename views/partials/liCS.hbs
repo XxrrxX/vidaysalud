@@ -1,0 +1,9 @@
+			<li class="nav-menu-item">
+			 <a id="liCS"class="nav-menu-link nav-link nav-menu-link_active" onclick="cerrar_sesion()">Cerrar sesion</a>
+			</li>
+            <script>
+                function cerrar_sesion(){
+                localStorage.removeItem('AuthVS');
+                window.location.href="/home";
+                }
+            </script>
