@@ -37,7 +37,9 @@ routes(){
     this.app.use('/',require('../routes/home'));
     this.app.use('/home',require('../routes/home'));
     this.app.use('/profile',require('../routes/profile'));
+    this.app.use('/profile_adm',require('../routes/profile_adm'));
     this.app.use('/agregar_productos',require('../routes/agregar_productos'));
+    this.app.use('/actualizar_productos',require('../routes/actualizar_productos'));
     this.app.use('/registro',require('../routes/registro'));
     this.app.use('/registrar',require('../routes/registro'));
     this.app.use('/registrar_producto',require('../routes/registrar_producto'));
