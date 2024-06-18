@@ -192,7 +192,9 @@ color: white;
 
 }
 .nav-menu-item{
-	line-height:70px;
+	line-height:15px;
+	width: 100%;
+	text-align: center;
 }
 .nav-menu-link:hover{
 	background:none;
