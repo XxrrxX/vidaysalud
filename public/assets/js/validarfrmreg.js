@@ -64,7 +64,8 @@ if(datosF.length > 0){
         let datosjson = JSON.parse(data);
         if(datosjson.msg == "sucess"){
             alert('Registro exitoso');
-            location.reload();            
+            location.reload();
+            window.location.href="/home";            
         }else{
             alert(datosjson.msg);
             location.reload();
