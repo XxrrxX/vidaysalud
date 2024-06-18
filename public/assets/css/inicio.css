@@ -210,6 +210,9 @@ color: white;
 	left:0;
 	
 }
+.btn-wsp_hide{
+	display: none;
+}
 footer p{
     padding: 0px;
 }
