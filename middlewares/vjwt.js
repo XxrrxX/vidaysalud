@@ -16,7 +16,7 @@ const vjwt = async(req = request,res = response, next ) =>{
         console.log('token valido');
     }catch(error){
         console.log('token no valido');
-        res.status(203).json({msg:"token no valido"});
+        return res.status(203).json({msg:"token no valido"});
     }
 }
 
