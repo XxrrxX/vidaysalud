@@ -204,7 +204,7 @@ color: white;
 .nav-toggle{
 	display:flex;
 	margin-top: -11%;
-	margin-left: 50%;
+	margin-left: 45%;
 }
 .nav-menu_visible{
 	left:0;
