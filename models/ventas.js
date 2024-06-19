@@ -6,18 +6,20 @@ const VentaSchema = Schema({
         type:Date,
         required:[true,'La fecha de venta es obligatoria'],
     },
-    productos:{
-        type:String,
-        required:[true,'producto es obligatorio'],
-    },
-    cantidad:{
-        type:Number,
-        required:[true,'La  cantidad es obligatoria']
-    },
-    monto:{
-        type:Number,
-        required:[true,'El monto es obligatorio']
-    }
+    productos:[{
+        nombre_del_producto:{
+            type:String    
+        },
+        cantidad_venta:{
+            type:Number,
+            required:[true,'La  cantidad es obligatoria']
+        },
+        monto:{
+            type:Number,
+            required:[true,'El monto es obligatorio']
+        }
+    }]
+    
 });
 
 VentaSchema.methods.toJSON = function(){
