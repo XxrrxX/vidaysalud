@@ -56,7 +56,7 @@ const PVPUT = async(req = request, res = response) => {
 
 
 module.exports = {
-    ACTprodGet,
-    ACTprodPOST,
-    ACTprodPUT
+    PVGet,
+    PVPOST,
+    PVPUT
 }
