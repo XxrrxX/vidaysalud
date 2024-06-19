@@ -14,10 +14,10 @@ router.get('/',PVGet);
 router.post('/',[ vjwt ],PVPOST);
 
 router.put('/',[
+        check('Fecha_venta','Fecha venta no valida').not().isEmpty(),
         check('nombre_del_producto','nombre de producto no valido').not().isEmpty(),
         check('cantidad','cantidad no valido requiere una numero').isInt().isLength({min:1}).not().isEmpty(),
-        check('Precio_compra','Precio_compra no valido requiere una numero').isInt().isLength({min:1}).not().isEmpty(),
-        check('Precio_venta','Precio_venta no valido requiere una numero').isInt().isLength({min:1}).not().isEmpty(),
+        check('monto','Monto no valido requiere una numero').isInt().isLength({min:1}).not().isEmpty(),
         ValidarCampos
 ],PVPUT);
 
