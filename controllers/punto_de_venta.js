@@ -40,7 +40,7 @@ const PVPOST = async(req, res = response) => {
 }
 
 const PVPUT = async(req = request, res = response) => {
-    const {Fecha_venta, nombre_del_producto , cantidad , monto } = req.body;
+    const {Fecha_venta, productos } = req.body;
   const producto = new Producto({nombre_del_producto, cantidad , Precio_compra,Precio_venta });
   //Verifivcar el correo
   const Existproducto = await Producto.findOne({nombre_del_producto});
