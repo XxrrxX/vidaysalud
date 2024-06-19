@@ -18,16 +18,14 @@
 <div id="productos">
     
     <table id="tablap" border="1">
-    <tr></tr><th>Nombre del producto</th><th>Inventario</th><th>precio compra</th><th>precio venta</th></tr>
+    <tr></tr><th>Nombre del producto</th><th>Catidad venta</th><th>Precio venta</th><th>Monto</th></tr>
     </table>
 </div>
 <div id="dvfrmprod">
     <form id="frmP">
         <p id="lblnp">Nombre del producto:</p><select name="productos" class="listp" id="np" ><option value="default">Seleciona un prodcuto</option></select>
         <p id="lblcant">cantidad:</p><input id="cant" placeholder="Ingresa cantidad a agregar">
-        <p id="lblpc">precio compra:</p><input id="pc" placeholder="ingresa el precio compra del producto">
-        <p id="lblpv">precio venta:</p><input id="pv" placeholder="Ingresa el precio venta del producto">
-        <button type="button" id="btreg" onclick="enviar()" class="btnregistrar" >Actualizar</button>
+        <button type="button" id="btreg" onclick="registro_venta()" class="btnregistrar" >Aceptar</button>
     </form>
 </div>
 <script>
@@ -52,35 +50,23 @@ fetch('/Punto_de_venta', {
         console.log('Respuesta del servidor:', data);
         let datosjson = JSON.parse(data);
         if(datosjson.msg == "sucess"){
-			let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));  
+            localStorage.removeItem('listaproductos');
+            localStorage.removeItem('venta');
+			let AuthVS = JSON.parse(localStorage.getItem('AuthVS')); 
+            localStorage.setItem('productos',JSON.stringify(datosjson.productos)); 
 			AuthVS.usuario = datosjson.usuario;
 			console.log(JSON.stringify(AuthVS));
 			localStorage.setItem("AuthVS",JSON.stringify(AuthVS));
 			let usuario = AuthVS.usuario;
 			let puser = document.getElementById("dvusuario");
-			puser.innerText= "Bienvenid@ "+usuario+" actualiza productos del inventario";
+			puser.innerText= "Bienvenid@ "+usuario+" al punto de venta";
             let productos = datosjson.productos;
             let tablap = document.getElementById("tablap");
             let lista = document.getElementById("np");
-            let i = 0;
             let strlist = `<option value="Opcion default">Selecciona un producto</option>`;
             productos.forEach(function(producto) {
-            var fila = tablap.insertRow(-1);
-            var nombre_producto = fila.insertCell(0);
-            var cantidad = fila.insertCell(1);
-            var precio_compra = fila.insertCell(2);
-            var precio_venta = fila.insertCell(3);
-
-            nombre_producto.innerHTML = producto.nombre_del_producto;
-            cantidad.innerHTML = producto.cantidad;
             strlist = strlist + `<option value="${producto.nombre_del_producto}">${producto.nombre_del_producto}</option>`
             lista.innerHTML = strlist
-            precio_compra.innerHTML = "$"+parseFloat(producto.Precio_compra);
-            precio_venta.innerHTML = "$"+parseFloat(producto.Precio_venta);
-            i += 1;
-
-            
-
 });
 
         }else{
@@ -94,7 +80,7 @@ fetch('/Punto_de_venta', {
     });
  
 </script>
-<script src="./assets/js/validarActP.js"></script>
+<script src="./assets/js/venta.js"></script>
 <main>
 </main>
 </body>
