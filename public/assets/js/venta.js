@@ -1,0 +1,133 @@
+let validar = (id,lbl,dato,df)=>{
+
+    if(document.getElementById(id).value.length == 0 ||document.getElementById(id).value == "Opcion default" ){
+        document.getElementById(lbl).style.color='red';        
+        document.getElementById(id).style.borderBlockColor='red';
+
+        if(df.length == 0){
+            df = dato;
+        }else{
+
+            df = `${df}, ${dato}`;
+        }        
+    }else{
+        document.getElementById(lbl).style.color='green';        
+        document.getElementById(id).style.borderBlockColor='green';
+    }
+    return df;
+}
+
+function registro_venta(){
+var datosF = "";
+datosF = validar('np','lblnp','nombe producto',datosF);
+datosF = validar('cant','lblcant','cantidad',datosF);
+
+let select = document.getElementById("np");
+let np = select.options[select.selectedIndex].value
+let cantidad = document.getElementById("cant").value;
+
+let productos = JSON.parse(localStorage.getItem('productos'));
+let inventario ;
+let precio_venta;
+
+if(datosF.length > 0){
+    alert(`Faltan los siguientes datos: \n ${datosF}`);
+}else{
+for (let i = 0; i < productos.length; i++) {
+  if(productos[i].nombre_del_producto == np){
+    inventario = productos[i].cantidad;
+    precio_venta =  productos[i].Precio_venta
+  }
+}
+
+if(cantidad == 0){
+    alert("No se pude ingresar un valor 0 en la cantidad a vender");
+}else{
+if(inventario < cantidad && inventario != 0){
+    let dif = cantidad - inventario;
+    alert(`Stock insuficiente: \n Inventario: ${inventario} \n Cantidad venta: ${cantidad} \n Direrencia: ${dif} `)
+}else{
+
+if(inventario != 0){
+    let tablap = document.getElementById("tablap");
+    let monto = parseInt(cantidad) * parseInt(precio_venta);
+    let fechaActual = new Date();
+if(!localStorage.getItem('listaproductos')){
+    var fila = tablap.insertRow(-1);
+    var nombre_tabla = fila.insertCell(0);
+    var cantidad_venta_tabla = fila.insertCell(1);
+    var precio_venta_tabla = fila.insertCell(2);
+    var monto_tabla = fila.insertCell(3);
+    let listajson = [{nombre_del_producto:np,cantidad_venta:cantidad,monto:monto}];
+    localStorage.setItem('listaproductos',JSON.stringify(listajson));
+    nombre_tabla.innerHTML = np;
+    cantidad_venta_tabla.innerHTML = cantidad;
+    precio_venta_tabla.innerHTML = "$"+parseFloat(precio_venta);
+    monto_tabla.innerHTML = "$"+parseFloat(monto);
+    let cv = 0;
+    listajson = JSON.parse(localStorage.getItem('listaproductos'));
+    console.log(JSON.stringify(listajson));
+}else{
+    let cv = 0;
+    let conf = 0;
+    listajson = JSON.parse(localStorage.getItem('listaproductos'));
+    for (let i = 0; i < listajson.length; i++) {
+        if(listajson[i].nombre_del_producto == np){
+            conf = 1;
+            cv =  cv + parseInt(listajson[i].cantidad_venta) + parseInt(cantidad);
+            listajson[i].cantidad_venta=cv;
+            listajson[i].monto=cv * parseInt(listajson[i].monto);
+            localStorage.setItem('listaproductos',JSON.stringify(listajson));
+            
+            if(inventario < listajson[i].cantidad_venta && inventario != 0){
+                let dif = listajson[i].cantidad_venta - inventario;
+                alert(`Stock insuficiente: \n Inventario: ${inventario} \n Cantidad venta: ${listajson[i].cantidad_venta} \n Direrencia: ${dif} `);
+                listajson[i].cantidad_venta= parseInt(listajson[i].cantidad_venta) - parseInt(cantidad) ;
+                listajson[i].monto= parseInt(listajson[i].cantidad_venta) * parseInt(precio_venta);
+                localStorage.setItem('listaproductos',JSON.stringify(listajson));
+                console.log(JSON.stringify(listajson));
+            }else{
+                var fila = tablap.insertRow(-1);
+                var nombre_tabla = fila.insertCell(0);
+                var cantidad_venta_tabla = fila.insertCell(1);
+                var precio_venta_tabla = fila.insertCell(2);
+                var monto_tabla = fila.insertCell(3);
+               nombre_tabla.innerHTML = np;
+               cantidad_venta_tabla.innerHTML = cantidad;
+               precio_venta_tabla.innerHTML = "$"+parseFloat(precio_venta);
+               monto_tabla.innerHTML = "$"+parseFloat(monto);
+            }
+
+        }
+        
+    }
+        if(conf == 0){
+        let prodV = {nombre_del_producto:np,cantidad_venta:cantidad,monto:monto};
+        let listajson = JSON.parse(localStorage.getItem('listaproductos'));
+        listajson.push(prodV);
+        localStorage.setItem('listaproductos',JSON.stringify(listajson));
+        console.log(JSON.stringify(listajson));
+        var fila = tablap.insertRow(-1);
+                var nombre_tabla = fila.insertCell(0);
+                var cantidad_venta_tabla = fila.insertCell(1);
+                var precio_venta_tabla = fila.insertCell(2);
+                var monto_tabla = fila.insertCell(3);
+               nombre_tabla.innerHTML = np;
+               cantidad_venta_tabla.innerHTML = cantidad;
+               precio_venta_tabla.innerHTML = "$"+parseFloat(precio_venta);
+               monto_tabla.innerHTML = "$"+parseFloat(monto);
+        }
+            
+       
+
+}
+//let venta = {Fecha:fechaActual,productos:listaproductos,cantidad:cantidad,monto:monto};
+//localStorage.setItem('venta',venta)
+}else{
+    alert(`No tenemos existencias en el inventario de ${np}`)
+}
+}
+
+}
+}
+}
