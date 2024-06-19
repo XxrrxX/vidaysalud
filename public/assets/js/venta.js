@@ -121,7 +121,13 @@ if(!localStorage.getItem('listaproductos')){
        
 
 }
-//let venta = {Fecha:fechaActual,productos:listaproductos,cantidad:cantidad,monto:monto};
+listajson = JSON.parse(localStorage.getItem('listaproductos'));
+let monto_total = 0;
+for (let i = 0; i < listajson.length; i++) {
+    monto_total += parseInt(listajson[i].monto);
+}
+let venta = {Fecha:fechaActual,productos:JSON.parse(localStorage.getItem('listaproductos')),monto_total:monto_total};
+console.log(JSON.stringify(venta))
 //localStorage.setItem('venta',venta)
 }else{
     alert(`No tenemos existencias en el inventario de ${np}`)
