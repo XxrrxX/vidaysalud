@@ -123,11 +123,16 @@ if(!localStorage.getItem('listaproductos')){
 }
 listajson = JSON.parse(localStorage.getItem('listaproductos'));
 let monto_total = 0;
+let cant_total = 0;
+
 for (let i = 0; i < listajson.length; i++) {
     monto_total += parseInt(listajson[i].monto);
+    cant_total += parseInt(listajson[i].cantidad_venta);
 }
-let venta = {Fecha:fechaActual,productos:JSON.parse(localStorage.getItem('listaproductos')),monto_total:monto_total};
+let venta = {Fecha:fechaActual,productos:JSON.parse(localStorage.getItem('listaproductos')),cantidad_venta:cantidad,monto_total:monto_total,cantidad_venta:cant_total};
 console.log(JSON.stringify(venta))
+let txtmonto = document.getElementById('txtmonto');
+txtmonto.innerText=`Cantitdad total: ${cant_total} Monto total : $${monto_total}`;
 //localStorage.setItem('venta',venta)
 }else{
     alert(`No tenemos existencias en el inventario de ${np}`)
