@@ -40,20 +40,30 @@ const PVPOST = async(req, res = response) => {
 }
 
 const PVPUT = async(req = request, res = response) => {
-    const {fecha_venta, productos, usuario } = req.body;
-  const producto = new Producto({nombre_del_producto, cantidad , Precio_compra,Precio_venta });
+    const {fecha_venta, productos, cantidad_venta, monto_total, usuario } = req.body;
   //Verifivcar el correo
+  productos.forEach(async function(producto_venta) {
+  const {nombre_del_producto, cantidad} = producto_venta;
+  const producto = new Producto({nombre_del_producto, cantidad});
   const Existproducto = await Producto.findOne({nombre_del_producto});
   if(Existproducto){
-    const body = req.body;
-    const { ...resto} = body;
+    let dif = parseInt(Existproducto.cantidad) - parseInt(producto_venta.cantidad_venta);
+    producto_venta['cantidad'] = dif;
+    console.log(producto_venta);
+    const { ...resto} = producto_venta;
     const  id  = Existproducto._id;
     console.log(id);
     const producto = await Producto.findByIdAndUpdate(id, resto);
-     console.log('PUT /registro producto actualizado estatus 203');
-     return res.status(203).json({ msg:'producto actualizado'});
-  }
+  }    
+});
+    const venta = new Venta({fecha_venta ,productos , cantidad_venta , monto_total, usuario });
+    await venta.save();
+    console.log('PUT /registro productos_venta registrado estatus 203');        
+    return res.status(203).json({ msg:'Venta realizada'});// }
+
 }
+ 
+  
 
 
 module.exports = {
