@@ -534,10 +534,11 @@ margin-left: -10%;
 }
 
 #btregv{
-padding: 10px;
-width: 50%;
+padding-top: 15px;
+padding-left: 10px;
+width: 55%;
 height: 15%;
-font-size: 16px;
+font-size: 18px;
 }
 
 #btregAC{
