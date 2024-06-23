@@ -129,11 +129,15 @@ for (let i = 0; i < listajson.length; i++) {
     monto_total += parseInt(listajson[i].monto);
     cant_total += parseInt(listajson[i].cantidad_venta);
 }
-let venta = {Fecha:fechaActual,productos:JSON.parse(localStorage.getItem('listaproductos')),cantidad_venta:cantidad,monto_total:monto_total,cantidad_venta:cant_total};
+let venta = {fecha_venta:fechaActual.toLocaleDateString(),productos:JSON.parse(localStorage.getItem('listaproductos')),cantidad_venta:cantidad,monto_total:monto_total,cantidad_venta:cant_total,usuario:JSON.parse(localStorage.getItem('AuthVS')).usuario};
 console.log(JSON.stringify(venta))
 let txtmonto = document.getElementById('txtmonto');
 txtmonto.innerText=`Cantitdad total: ${cant_total} Monto total : $${monto_total}`;
-//localStorage.setItem('venta',venta)
+localStorage.removeItem('venta');
+document.getElementById('frmP').reset();
+localStorage.setItem('venta',JSON.stringify(venta));
+
+
 }else{
     alert(`No tenemos existencias en el inventario de ${np}`)
 }
@@ -141,4 +145,48 @@ txtmonto.innerText=`Cantitdad total: ${cant_total} Monto total : $${monto_total}
 
 }
 }
+}
+
+function generar_venta(){
+
+    let pago_cliente = prompt("Con cuanto paga el cliente?: ");
+    let monto_total = parseInt(JSON.parse(localStorage.getItem('venta')).monto_total);
+    let cambio = pago_cliente - monto_total;
+
+    alert(`Pago del cliente: $${pago_cliente} \n Monto total de compra: $${monto_total} \n Cambio: $${cambio}`);
+
+    alert("Venta realizada")
+
+   // fetch('/Punto_de_venta', {
+   //     method: 'PUT',
+   //     headers: {
+   //     'Content-Type': 'application/json' // Tipo de contenido
+   //     },
+   //     body: JSON.stringify(venta) // Datos a enviar
+   // }).then(response => {
+   //     if (response.ok) {
+   //         return response.text();
+   //     } else {
+   //         alert("A ocurrido un error inesperado!");
+   //          window.location.href="/login";
+   //         throw new Error('Error en la llamada Ajax');
+   //     }
+   // })
+   // .then(data => {
+   //     console.log('Respuesta del servidor:', data);
+   //     let datosjson = JSON.parse(data);
+   //     if(datosjson.msg == "sucess"){
+   //  
+   // 
+   //     }else{
+   //         alert(datosjson.msg);
+   //        // window.location.href="/punto_de_venta";
+   //     }
+   // 
+   // })
+   // .catch(error => {
+   //     console.error('Error:', error);
+   // });
+    
+
 }
