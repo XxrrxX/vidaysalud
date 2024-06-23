@@ -2,25 +2,37 @@ const {Schema, model} = require('mongoose');
 const { type } = require('os');
 const { string } = require('yargs');
 const VentaSchema = Schema({
-    fecha_venta:{
+fecha_venta:{
+    type:String,
+    required:[true,'fecha obligatorio']
+},
+productos:[{
+    nombre_del_producto:{
         type:String,
-        required:[true,'La fecha de venta es obligatoria'],
+        required:[true,'nombre del producto obligatorio']
     },
-    productos:[{
-        nombre_del_producto:{
-            type:String    
-        },
-        cantidad_venta:{
-            type:Number,
-            required:[true,'La  cantidad es obligatoria']
-        },
-        monto:{
-            type:Number,
-            required:[true,'El monto es obligatorio']
-        }
-    }]
-    
-});
+    cantidad_venta:{
+        type:Number,
+        required:[true,'cantidad venta obligatorio']
+    },
+    monto:{
+        type:Number,
+        required:[true,'monto obligatorio']
+    }}],
+cantidad_venta:{
+    type:Number,
+    required:[true,'cantidad venta obligatorio']
+},
+monto_total:{
+    type:Number,
+    required:[true,'monto total obligatorio']
+},
+usuario:{
+    type:String,
+    required:[true,'usuario obligatorio']
+}
+}
+);
 
 VentaSchema.methods.toJSON = function(){
         const {__v,_id, ...venta} = this.toObject();
