@@ -2,8 +2,8 @@ const {Schema, model} = require('mongoose');
 const { type } = require('os');
 const { string } = require('yargs');
 const VentaSchema = Schema({
-    Fecha_venta:{
-        type:Date,
+    fecha_venta:{
+        type:String,
         required:[true,'La fecha de venta es obligatoria'],
     },
     productos:[{
