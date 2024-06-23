@@ -148,7 +148,7 @@ localStorage.setItem('venta',JSON.stringify(venta));
 }
 
 function generar_venta(){
-
+if(localStorage.getItem('venta')){
     let pago_cliente = prompt("Con cuanto paga el cliente?: ");
     let monto_total = parseInt(JSON.parse(localStorage.getItem('venta')).monto_total);
     let cambio = pago_cliente - monto_total;
@@ -186,5 +186,8 @@ function generar_venta(){
    .catch(error => {
        console.error('Error:', error);
    });
+}else{
+    alert("No se a capturado nada en el carrito de compras");
+}
   
 }
