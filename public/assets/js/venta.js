@@ -152,41 +152,39 @@ function generar_venta(){
     let pago_cliente = prompt("Con cuanto paga el cliente?: ");
     let monto_total = parseInt(JSON.parse(localStorage.getItem('venta')).monto_total);
     let cambio = pago_cliente - monto_total;
-
+    let venta = JSON.parse(localStorage.getItem('venta'));
     alert(`Pago del cliente: $${pago_cliente} \n Monto total de compra: $${monto_total} \n Cambio: $${cambio}`);
 
-    alert("Venta realizada")
 
-   // fetch('/Punto_de_venta', {
-   //     method: 'PUT',
-   //     headers: {
-   //     'Content-Type': 'application/json' // Tipo de contenido
-   //     },
-   //     body: JSON.stringify(venta) // Datos a enviar
-   // }).then(response => {
-   //     if (response.ok) {
-   //         return response.text();
-   //     } else {
-   //         alert("A ocurrido un error inesperado!");
-   //          window.location.href="/login";
-   //         throw new Error('Error en la llamada Ajax');
-   //     }
-   // })
-   // .then(data => {
-   //     console.log('Respuesta del servidor:', data);
-   //     let datosjson = JSON.parse(data);
-   //     if(datosjson.msg == "sucess"){
-   //  
-   // 
-   //     }else{
-   //         alert(datosjson.msg);
-   //        // window.location.href="/punto_de_venta";
-   //     }
-   // 
-   // })
-   // .catch(error => {
-   //     console.error('Error:', error);
-   // });
+   fetch('/Punto_de_venta', {
+       method: 'PUT',
+       headers: {
+       'Content-Type': 'application/json' // Tipo de contenido
+       },
+       body: JSON.stringify(venta) // Datos a enviar
+   }).then(response => {
+       if (response.ok) {
+           return response.text();
+       } else {
+           alert("A ocurrido un error inesperado!");
+            window.location.href="/login";
+           throw new Error('Error en la llamada Ajax');
+       }
+   })
+   .then(data => {
+       console.log('Respuesta del servidor:', data);
+       let datosjson = JSON.parse(data);
+       if(datosjson.msg == "sucess"){
     
-
+   
+       }else{
+           alert(datosjson.msg);
+           window.location.href="/punto_de_venta";
+       }
+   
+   })
+   .catch(error => {
+       console.error('Error:', error);
+   });
+  
 }
