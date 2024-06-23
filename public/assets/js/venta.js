@@ -45,7 +45,7 @@ if(cantidad == 0){
 }else{
 if(inventario < cantidad && inventario != 0){
     let dif = cantidad - inventario;
-    alert(`Stock insuficiente: \n Inventario: ${inventario} \n Cantidad venta: ${cantidad} \n Direrencia: ${dif} `)
+    alert(`Stock insuficiente: \n Inventario: ${inventario} \n Cantidad venta: ${cantidad} \n Diferencia: ${dif} `)
 }else{
 
 if(inventario != 0){
