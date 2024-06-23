@@ -58,7 +58,7 @@ const PVPUT = async(req = request, res = response) => {
 });
     const venta = new Venta({fecha_venta ,productos , cantidad_venta , monto_total, usuario });
     await venta.save();
-    console.log('PUT /registro productos_venta registrado estatus 203');        
+    console.log('PUT /Punto de venta productos_venta registrado estatus 203');        
     return res.status(203).json({ msg:'Venta realizada'});// }
 
 }
