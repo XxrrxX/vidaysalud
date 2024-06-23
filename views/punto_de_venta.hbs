@@ -21,14 +21,14 @@
     <tr></tr><th>Nombre del producto</th><th>Catidad venta</th><th>Precio venta</th><th>Monto</th></tr>
     
     </table>
-    <div id="monto_total"><div id="txtmonto"></div></div>
-    
+    <div id="monto_total"><div id="txtmonto"></div></div> 
 </div>
 <div id="dvfrmprod">
     <form id="frmP">
         <p id="lblnp">Nombre del producto:</p><select name="productos" class="listp" id="np" ><option value="default">Seleciona un prodcuto</option></select>
         <p id="lblcant">cantidad:</p><input id="cant" placeholder="Ingresa cantidad a agregar">
-        <button type="button" id="btreg" onclick="registro_venta()" class="btnregistrar" >Aceptar</button>
+        <button type="button" id="btregv" onclick="registro_venta()" class="btnregistrarv" >Agregar al carrito</button>
+        <button type="button" id="btregv" onclick="generar_venta()" class="btnregistrarv" >Generar venta</button>
     </form>
 </div>
 <script>
