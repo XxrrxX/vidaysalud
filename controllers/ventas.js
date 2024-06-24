@@ -15,7 +15,7 @@ const ventasGet = async(req = request, res = response) => {
 
 const ventasPost = async(req, res = response) => {
     const { id, token } = req.body;
-    if(id.length < 24 || id.length > 24 || token == ""){
+    if(id.length < 24 || id.length > 24 ){
         console.log("POST /ventas  error length en ID estatus 203");
         res.status(203).json({msg:"Sesion expirada"});
     }else{
