@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agregar pedido</title>
+<link rel="icon" type="image/icon" href="./img/ico/vidaysalud.ico">
+<link rel="stylesheet" href="./assets/css/inicio.css">
+<link rel="stylesheet" href="./assets/css/fontello/css/fontello.css">
+<script src="https://kit.fontawesome.com/5b0a1a1a16.js" crossorigin="anonymous"></script>
+<script defer src="./assets/js/menu.js"></script>
+
+</head>
+<body>
+{{>header_user}}
+<div id="dvusuario">Bienvenido</div>
+<div id="productos">
+    
+    <table id="tablap" border="1">
+    <tr></tr><th>Nombre del producto</th><th>Catidad venta</th><th>Precio venta</th><th>Monto</th></tr>
+    
+    </table>
+    <div id="monto_total"><div id="txtmonto"></div></div> 
+</div>
+<div id="dvfrmprod">
+    <form id="frmP">
+        <p id="lblnp">Nombre del producto:</p><select name="productos" class="listp" id="np" ><option value="default">Seleciona un prodcuto</option></select>
+        <p id="lblcant">cantidad:</p><input id="cant" placeholder="Ingresa cantidad a agregar">
+        <button type="button" id="btregv" onclick="registro_venta()" class="btnregistrarv" >Agregar al carrito</button>
+        <button type="button" id="btregv" onclick="generar_venta()" class="btnregistrarv" >Generar venta</button>
+    </form>
+</div>
+
+
+<main>
+</main>
+<script>
+let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
+console.log(AuthVS);
+fetch('/agregar_pedido', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json' // Tipo de contenido
+        },
+        body: JSON.stringify(AuthVS) // Datos a enviar
+    }).then(response => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            alert("A ocurrido un error inesperado!");
+			 window.location.href="/login";
+            throw new Error('Error en la llamada Ajax');
+        }
+    })
+    .then(data => {
+        console.log('Respuesta del servidor:', data);
+        let datosjson = JSON.parse(data);
+        
+        if(datosjson.msg == "sucess"){
+            localStorage.removeItem('listaproductos');
+            localStorage.removeItem('pedido');
+			let AuthVS = JSON.parse(localStorage.getItem('AuthVS')); 
+            localStorage.setItem('productos',JSON.stringify(datosjson.productos)); 
+			AuthVS.usuario = datosjson.usuario;
+			console.log(JSON.stringify(AuthVS));
+			localStorage.setItem("AuthVS",JSON.stringify(AuthVS));
+			let usuario = AuthVS.usuario;
+			let puser = document.getElementById("dvusuario");
+			puser.innerText= "Bienvenid@ "+usuario+" al punto de venta";
+            let productos = datosjson.productos;
+            let tablap = document.getElementById("tablap");
+            let lista = document.getElementById("np");
+            let strlist = `<option value="Opcion default">Selecciona un producto</option>`;
+            productos.forEach(function(producto) {
+            strlist = strlist + `<option value="${producto.nombre_del_producto}">${producto.nombre_del_producto}</option>`
+            lista.innerHTML = strlist
+});
+
+        }else{
+            alert(datosjson.msg);
+            window.location.href="/login";
+        }
+
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+ 
+</script>
+</body>
+{{>footer}}
+</html>
