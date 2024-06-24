@@ -74,6 +74,7 @@ fetch('/Punto_de_venta', {
 
         }else{
             alert(datosjson.msg);
+            localStorage.removeItem('venta');
             window.location.href="/login";
         }
 
