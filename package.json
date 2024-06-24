@@ -1,6 +1,6 @@
 {
   "name": "vidaysalud",
-  "version": "0.0.10",
+  "version": "0.0.14",
   "description": "servidor web para adm de inventario y punto de venta",
   "main": "index.js",
   "scripts": {
