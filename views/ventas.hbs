@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ventas</title>
+<link rel="icon" type="image/icon" href="./img/ico/vidaysalud.ico">
+<link rel="stylesheet" href="./assets/css/inicio.css">
+<link rel="stylesheet" href="./assets/css/fontello/css/fontello.css">
+<script src="https://kit.fontawesome.com/5b0a1a1a16.js" crossorigin="anonymous"></script>
+<script defer src="./assets/js/menu.js"></script>
+
+</head>
+<body>
+{{>header_adm}}
+<div id="dvusuario">Bienvenido</div>
+
+    <div id="productos">
+
+    <table id="tablaIV" border="1">
+    <tr></tr><th>fecha venta</th><th>Productos</th><th>catidad_venta</th><th>monto </th></tr>
+    </table>
+    <div id="monto_totalV"><div id="txtmonto"></div></div>
+    </div>
+    <div id="dvfrmprodV">
+    <form id="frmP">
+        <p id="lblnp">Fecha Venta:</p>
+        <p id="lbldia">Dia:</p><select name="productos" class="listp" id="listadia" >
+        </select>
+        <script>
+            let listadia = document.getElementById("listadia");
+            let strdias = `<option value="Opcion default">Selecciona un dia</option>`;
+           for (let i = 1; i <= 31; i++) {
+             strdias = strdias + `<option value="${i}">${i}</option>`
+           }
+            listadia.innerHTML = strdias
+        </script>
+                <p id="lblmes">Mes:</p><select name="Mes" class="listp" id="listames" ></select>
+        <script>
+            let listames = document.getElementById("listames");
+            let strmes = `<option value="Opcion default">Selecciona un mes</option>`;
+           for (let i = 1; i <= 12; i++) {
+             strmes = strmes + `<option value="${i}">${i}</option>`
+           }
+            listames.innerHTML = strmes 
+        </script>
+            <p id="lblAño">Año:</p><select name="Año" class="listp" id="listaAño" ></select>
+        <script>
+            let listaAño = document.getElementById("listaAño");
+            let strAño = `<option value="Opcion default">Selecciona un Año</option>`;
+           let Año = 2023;
+           for (let i = 1; i <= 20; i++) {
+             strAño = strAño + `<option value="${Año}">${Año}</option>`
+             Año+=1;
+           }
+            listaAño.innerHTML = strAño
+        </script>
+
+        <button type="button" id="btconsv" onclick="consultar_ventas()" class="btnregistrarv" >consultar fecha</button>
+    </form>
+</div>
+
+
+	<script src="./assets/js/consulta_ventas.js" ></script>   
+
+<script>
+let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
+console.log(AuthVS);
+</script>
+<main>
+</main>
+</body>
+{{>footer}}
+</html>
