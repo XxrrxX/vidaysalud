@@ -18,7 +18,7 @@
 <div id="productos">
     
     <table id="tablap" border="1">
-    <tr></tr><th>Nombre del producto</th><th>Catidad venta</th><th>Precio venta</th><th>Monto</th></tr>
+    <tr></tr><th>Nombre del producto</th><th>Catidad pedido</th><th>Precio pedido</th><th>Monto</th></tr>
     
     </table>
     <div id="monto_total"><div id="txtmonto"></div></div> 
@@ -27,8 +27,8 @@
     <form id="frmP">
         <p id="lblnp">Nombre del producto:</p><select name="productos" class="listp" id="np" ><option value="default">Seleciona un prodcuto</option></select>
         <p id="lblcant">cantidad:</p><input id="cant" placeholder="Ingresa cantidad a agregar">
-        <button type="button" id="btregv" onclick="registro_venta()" class="btnregistrarv" >Agregar al carrito</button>
-        <button type="button" id="btregv" onclick="generar_venta()" class="btnregistrarv" >Generar venta</button>
+        <button type="button" id="btregv" onclick="agregar_pedido()" class="btnregistrarv" >Agregar al carrito</button>
+        <button type="button" id="btregv" onclick="generar_pedido()" class="btnregistrarv" >Realizar Pedido</button>
     </form>
 </div>
 
@@ -56,7 +56,6 @@ fetch('/agregar_pedido', {
     .then(data => {
         console.log('Respuesta del servidor:', data);
         let datosjson = JSON.parse(data);
-        
         if(datosjson.msg == "sucess"){
             localStorage.removeItem('listaproductos');
             localStorage.removeItem('pedido');
@@ -67,7 +66,7 @@ fetch('/agregar_pedido', {
 			localStorage.setItem("AuthVS",JSON.stringify(AuthVS));
 			let usuario = AuthVS.usuario;
 			let puser = document.getElementById("dvusuario");
-			puser.innerText= "Bienvenid@ "+usuario+" al punto de venta";
+			puser.innerText= "Bienvenid@ "+usuario+" captura de tu pedido";
             let productos = datosjson.productos;
             let tablap = document.getElementById("tablap");
             let lista = document.getElementById("np");
@@ -88,6 +87,7 @@ fetch('/agregar_pedido', {
     });
  
 </script>
+<script src="./assets/js/pedido.js"></script>
 </body>
 {{>footer}}
 </html>
