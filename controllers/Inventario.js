@@ -27,7 +27,6 @@ const InventarioPost = async(req, res = response) => {
     console.log("ID confirmado");
     console.log('POST /Inventario estatus 200')
     const productos = await Producto.find();
-
     res.status(200).json({msg:"sucess",usuario:usuario.nombre,rol:usuario.rol,productos});
     }
     }catch(error){
