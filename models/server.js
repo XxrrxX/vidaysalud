@@ -48,6 +48,7 @@ routes(){
     this.app.use('/punto_de_venta',require('../routes/punto_de_venta'));
     this.app.use('/agregar_pedido',require('../routes/agregar_pedido'));
     this.app.use('/Inventario',require('../routes/Inventario'));
+    this.app.use('/ventas',require('../routes/ventas'));
     
     
 }
