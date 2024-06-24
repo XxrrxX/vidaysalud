@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agregar productos</title>
+<link rel="icon" type="image/icon" href="./img/ico/vidaysalud.ico">
+<link rel="stylesheet" href="./assets/css/inicio.css">
+<link rel="stylesheet" href="./assets/css/fontello/css/fontello.css">
+<script src="https://kit.fontawesome.com/5b0a1a1a16.js" crossorigin="anonymous"></script>
+<script defer src="./assets/js/menu.js"></script>
+
+</head>
+<body>
+{{>header_adm}}
+<div id="dvusuario">Bienvenido</div>
+<div id="productos">
+    
+    <table id="tablaI" border="1">
+    <tr></tr><th>Nombre del producto</th><th>Inventario</th><th>precio compra</th><th>precio venta</th></tr>
+    </table>
+
+<script>
+let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));
+console.log(AuthVS);
+fetch('/inventario', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json' // Tipo de contenido
+        },
+        body: JSON.stringify(AuthVS) // Datos a enviar
+    }).then(response => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            alert("A ocurrido un error inesperado!");
+			 window.location.href="/login";
+            throw new Error('Error en la llamada Ajax');
+        }
+    })
+    .then(data => {
+        console.log('Respuesta del servidor:', data);
+        let datosjson = JSON.parse(data);
+        if(datosjson.msg == "sucess"){
+			let AuthVS = JSON.parse(localStorage.getItem('AuthVS'));  
+			AuthVS.usuario = datosjson.usuario;
+			console.log(JSON.stringify(AuthVS));
+			localStorage.setItem("AuthVS",JSON.stringify(AuthVS));
+			let usuario = AuthVS.usuario;
+			let puser = document.getElementById("dvusuario");
+			puser.innerText= "Bienvenid@ "+usuario+" al inventario";
+            let productos = datosjson.productos;
+            let tablap = document.getElementById("tablaI");
+            let lista = document.getElementById("np");
+            productos.forEach(function(producto) {
+            var fila = tablap.insertRow(-1);
+            var nombre_producto = fila.insertCell(0);
+            var cantidad = fila.insertCell(1);
+            var precio_compra = fila.insertCell(2);
+            var precio_venta = fila.insertCell(3);
+
+            nombre_producto.innerHTML = producto.nombre_del_producto;
+            cantidad.innerHTML = producto.cantidad;
+            precio_compra.innerHTML = "$"+parseFloat(producto.Precio_compra);
+            precio_venta.innerHTML = "$"+parseFloat(producto.Precio_venta);
+
+});
+
+        }else{
+            alert(datosjson.msg);
+            window.location.href="/login";
+        }
+
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+ 
+ 
+</script>
+<main>
+</main>
+</body>
+{{>footer}}
+</html>
