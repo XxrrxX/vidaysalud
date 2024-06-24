@@ -112,7 +112,7 @@ text-decoration:none;
 	margin-top: -24%;
 	display: flex;
 	width: 16%;
-	height: 200px;
+	height: 290px;
 	background-color: #2c3e50;
 	border-radius: 10px;
 	box-shadow: 0px 20px 20px ;
@@ -210,10 +210,35 @@ text-decoration:none;
 	margin-right: auto;
 
 }
+
+
+
 #tablap th{
 color: whitesmoke;
 background-color: darkslategrey;
 }
+
+#tablaI{
+	border-radius: 10px;
+	box-shadow: 0px 20px 20px ;
+	background-color: white;
+	text-align: center;
+	width: 90%;
+	height: 10px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+
+
+#tablaI th{
+color: whitesmoke;
+background-color: darkslategrey;
+}
+
+
+
 #dvusuario {
 	color: white;
 	display: block;
@@ -302,7 +327,7 @@ color: white;
 	padding:10px;
 	display: flex;
 	cursor: pointer;
-	height: 20%;
+	height: 15%;
 	width: 70%;
 	text-align: center;
 	font-size: 10px;
