@@ -484,6 +484,7 @@ color: white;
 	line-height:15px;
 	width: 100%;
 	text-align: center;
+	font-size: 20px;
 }
 .nav-menu-link:hover{
 	background:none;
@@ -507,7 +508,7 @@ footer p{
 }
 footer{
 	margin-top: 160%;
-	height: 30px;
+	height: 40px;
 	background-color:purple;
 	color:white;
 	text-align:center;
@@ -539,7 +540,12 @@ footer{
 	font-size: 35px;
 	}
 
-	#tablap{
+#tablaI{
+	width: 122%;
+	margin-left: -11%;
+}
+	
+#tablap{
 		font-size: 16px;
 		border-radius: 10px;
 		box-shadow: 5px, 5px ,10px;
