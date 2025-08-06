@@ -24,8 +24,60 @@
 <div id="dvfrmprodAP">
     <form id="frmP">
         <p id="lblnp">Nombre del producto:</p>
+
+ <style>
+	
+    .view {
+      display: none;
+    }
+
+
+    .active {
+      display: block;
+    }
+
+ </style>
+	<div id="PN" class="view">
 	<input id="np" placeholder="ingresa un nombre para el producto">
-	<input type="checkbox" id="miCheckbox">
+        
+        </div>
+
+	<div id="PE" class="view active">
+        <select name="productos" class="listp" id="np" ><option value="default"></select>
+        </div>
+        
+        <p display="block">Producto nuevo</p>
+	<input display="block" type="checkbox" id="producto_nuevo">
+
+<script>
+  const checkbox_Nuevo_Producto = document.getElementById('producto_nuevo');
+
+  checkbox_Nuevo_Producto.addEventListener('change', function () {
+    if (checkbox_Nuevo_Producto.checked) {
+      console.log('El producto es nuevo');
+      Mostrar("PN")
+   
+    } else {
+      console.log('Producto existente');
+      // Aquí puedes manejar cuando se desactive
+      Mostrar("PE")
+    }
+  });
+
+    function Mostrar(id) {
+
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+     
+      document.getElementById(id).classList.add('active');
+     
+
+    }
+
+ 
+
+</script>
+
+
         <p id="lblcant">Cantidad:</p><input id="cant" placeholder="Ingresa cantidad a agregar">
         <p id="lblpc">Precio compra:</p><input id="pc" placeholder="ingresa el precio compra del producto">
         <p id="lblpv">Precio venta:</p><input id="pv" placeholder="Ingresa el precio venta del producto">
