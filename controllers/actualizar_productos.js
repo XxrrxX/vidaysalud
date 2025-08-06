@@ -39,7 +39,7 @@ const ACTprodPOST = async(req, res = response) => {
 }
 
 const ACTprodPUT = async(req = request, res = response) => {
-    const {nombre_del_producto , cantidad , Precio_compra,Precio_venta } = req.body;
+  const {nombre_del_producto , cantidad , Precio_compra,Precio_venta } = req.body;
   const producto = new Producto({nombre_del_producto, cantidad , Precio_compra,Precio_venta });
   //Verifivcar el correo
   const Existproducto = await Producto.findOne({nombre_del_producto});
@@ -47,8 +47,23 @@ const ACTprodPUT = async(req = request, res = response) => {
     const body = req.body;
     const { ...resto} = body;
     const  id  = Existproducto._id;
+    console.log("prueba");
     console.log(id);
-    const producto = await Producto.findByIdAndUpdate(id, resto);
+    console.log(Existproducto.cantidad);
+    console.log(cantidad);
+    let ActCant = parseInt(Existproducto.cantidad) + parseInt(cantidad);
+
+    console.log(ActCant);
+
+    const updateData = {
+    nombre_del_producto,
+    cantidad: ActCant,
+    Precio_compra,
+    Precio_venta
+    };
+
+
+    const producto = await Producto.findByIdAndUpdate(id, updateData, { new: true });
      console.log('PUT /registro producto actualizado estatus 203');
      return res.status(203).json({ msg:'producto actualizado'});
   }
