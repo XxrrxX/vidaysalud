@@ -47,13 +47,7 @@ const ACTprodPUT = async(req = request, res = response) => {
     const body = req.body;
     const { ...resto} = body;
     const  id  = Existproducto._id;
-    console.log("prueba");
-    console.log(id);
-    console.log(Existproducto.cantidad);
-    console.log(cantidad);
     let ActCant = parseInt(Existproducto.cantidad) + parseInt(cantidad);
-
-    console.log(ActCant);
 
     const updateData = {
     nombre_del_producto,
